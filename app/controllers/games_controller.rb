@@ -20,7 +20,7 @@ class GamesController < ApplicationController
 
     if (b - a).empty? && uk_word == true
       @score = "Congratulations! #{params[:word].upcase} is a valid English word!"
-      @points = params[:word].length
+      @points = (params[:word].length)*10
     elsif (b - a).present?
       @score = "Sorry but #{params[:word].upcase} can't be built with the letters: #{params[:letters]}"
       @points = "0"
