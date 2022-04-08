@@ -18,15 +18,15 @@ class GamesController < ApplicationController
     json = JSON.parse(response.read)
     uk_word = json['found']
 
-    if (b - a).empty? && uk_word = "true"
+    if (b - a).empty? && uk_word == true
       @score = "Congratulations! #{params[:word].upcase} is a valid English word!"
       @points = params[:word].length
     elsif (b - a).present?
-      @score = "Sorry but #{params[:word].upcase} can't be built with the letters#{params[:letters]}"
+      @score = "Sorry but #{params[:word].upcase} can't be built with the letters: #{params[:letters]}"
+      @points = "0"
     else
       @score = "Sorry but #{params[:word].upcase} is not an English word"
+      @points = "0"
     end
-
-
   end
 end
